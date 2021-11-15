@@ -1,0 +1,52 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="odev1">
+   <!-- 1) Interpolation yani {‌{}} Syntax'ını kullanarak <p> elementinin içeriğini Name ve Age verileriyle doldurun-->
+    <p>{{name}} {{age}}</p>
+    <!-- 2) Yaşınızı 5 ile çarpıp <p> içerisinde yazdırınız -->
+    
+    <p> {{yashesapla()}} </p>
+
+    <!-- 3) Fonksiyon çağırarak 0 ile 1 arasında bir sayı üretip <p> içerisinde yazdırınız (Math.random()) -->
+    <p> {{rasgeleSayi()}} </p>
+    
+   
+    <!-- 4) Google üzerinden bulacağınız herhangi bir fotoğrafı <img> elementinde gösterme işlemini yapınızı. 
+        Bunu yaparken "src" attribute' una bind etmeyi unutmayınız -->
+        <img v-bind:src="resim"> <img>
+    <!-- 5) Name değişkeninin değerinin <input /> içine yazdığınız değer ile anlık olarak değiştirilmesini sağlayınız. 
+        ("value" attribute kullanarak) -->
+        <input type="text" v-on:input="isimdegistir">
+</div>
+
+<script>
+new Vue({
+    el: "#odev1",
+    data:
+    {
+        name: 'alper küçük',
+        age: '24',
+        resim: 'https://icdn.ensonhaber.com/resimler/galeri/206457.jpg'
+    },
+methods: 
+    {
+        yashesapla : function()
+        {
+        return this.age * 5;
+        },
+        rasgeleSayi : function()
+        {
+           return Math.random() ;
+        },
+       isimdegistir : function(event){
+           return this.name = event.target.value;
+       }
+
+    },
+
+    
+    
+
+});
+
+</script>

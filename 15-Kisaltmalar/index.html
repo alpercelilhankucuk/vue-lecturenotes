@@ -1,0 +1,19 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <button @click ="changeLink">Linki değiştirmek icin tıklayınız</button>
+    <a :href="link">link</a>
+</div>
+<script>
+new Vue ({
+    el : "#app",
+    data : {
+        link: "https://www.vuejs.com"
+    },
+    methods :{
+        changeLink : function() {
+this.link ="https://alperkucuk.com"
+        }
+    }
+})
+</script>

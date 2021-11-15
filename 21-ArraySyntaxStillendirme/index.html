@@ -1,0 +1,30 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link href="style.css" type="text/css" rel="stylesheet"/>
+<div id="app">
+    <div class="box" :style="{backgroundColor : color}"></div>
+    <div class="box" :style="customStyle"></div>
+    <div class="box" :style="[customStyle , {width:yukseklik + 'px' } ]"></div>
+    <hr>
+    <input type="text" v-model="color">
+    <input type="text" v-model="yukseklik">
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data:{
+            color:"green",
+            yukseklik:200
+        },
+        computed :{
+            customStyle : function(){
+                return{
+                    backgroundColor : this.color,
+                    width : this.yukseklik + "px"
+                }
+            }
+        }
+        
+    })
+
+</script>

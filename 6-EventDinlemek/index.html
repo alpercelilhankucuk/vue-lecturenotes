@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <button v-on:click="showAlert">TIKLAYINCA ALERT VERİR V-ON:CLİCK BAĞLAR TIKLAMAYI  METHODSUN ICINDEKİ ALERT 
+        CALISTIRIR.
+    </button>
+    <p> {{counter}}</p>
+    <button v-on:click="counter+=5"> Arttır Class icindekiyle arttırır.</button>
+    <button v-on:click="increaseCounter"> Fonksiyonla Arttırır</button>
+
+</div>
+
+<script>
+    new Vue({
+        el:"#app",
+        data: {
+            counter: 0
+        },
+        methods :{
+            showAlert : function(){
+                alert('TIKLAYINCA ALERT VERİR V-ONCLİCK BAĞLAR TIKLAMAYI  METHODSUN ICINDEKİ ALERT CALISTIRIR');
+            },
+            increaseCounter : function(){
+                this.counter++;
+            }
+        }
+    })
+</script>

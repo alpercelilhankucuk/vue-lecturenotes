@@ -1,0 +1,139 @@
+<style>
+    #effect {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+    }
+    
+    .highlight {
+      background-color: red;
+      width: 200px !important;
+    }
+    
+    .shrink {
+      background-color: gray;
+      width: 50px !important;
+      height: 100px;
+    }
+    .yukseklik 
+    {
+      height: 100px;
+      width : 50px;
+      background-color: yellow;
+    }
+    
+    .sinif_class 
+    {
+      height: 100px;
+      width : 50px;
+      background-color: blue;
+    }
+    
+    .sinif_class1
+    {
+      border:10px solid green;
+    }
+    
+    .Progress 
+    {
+      width : 100px;
+      height : 10px;
+      border : 1px solid #000;
+      border-radius : 10px;
+    }
+    .Progress div 
+    {
+      background-color : green;
+      height: 100%;
+      border-radius : 10px;
+    }
+    
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <div id="exercise">
+      <!-- 1) Efekti Butona basarak başlatın. Efekt "highlight" ve/veya "shrink" class'ları arasında değişmelidir. Bu değişim her bir interval döngüsünde olmalıdır. ("effect" id' li div'e o anki aktif olan class eklenecektir.) -->
+      <div>
+        <button @click="startEffect">Efekti Başlat!</button>
+        <button @click="stopEffect">Efekti Durdur!</button>
+        <div id="effect" :class="divclass"></div>
+      </div>
+      <!-- 2) Birkaç tane CSS Class'ı üreterek bu Class'ları Array Syntax'ı ile aşağıdaki <div>' e ekleyiniz -->
+      <div :class="[{highlight : !effect_class_durumu},{shrink : effect_class_durumu}]">Henüz bir class'ım yok :(</div>
+      <!-- 3) Örnek birkaç tane Class üreterek (Ya da ürettiklerinizi kullanarak) <input> içerisine Class adı girerek hemen alttaki <div> elementine bu yazılan Class'ı eklemeyi yapınız. -->
+      <div>
+        <input type="text" v-model="inputveri">
+        <div :class="inputveri"></div>
+      </div>
+      <!-- 4) Kullanıcının Class isimlerini girebileceği iki adet <input> elementimiz var. Bunları kullanarak hemen alttaki <div> elementinin Class'larini attached etmesini sağlayınız  -->
+      <div>
+        <input type="text" v-model="sinif">
+        <input type="text" v-model="sinif1">
+        <div :class="[sinif,sinif1]"></div>
+      </div>
+      <!-- 5) 3.Uygulamayı tekrarlayın. Fakat bu sefer Class Adı yerine Denk gelecek Style Kodlarını ekleyiniz.  -->
+      <div style="float:left">
+        <input type="text" v-model="styledegistir">
+        <div :style="[{height: styledegistir +'px'},{width: (styledegistir-10) +'px'}]" :class="[sinif,sinif1]"></div>
+      </div>
+      <!-- 6) setInterval ve Style Binding kullanarak Basit bir progress bar üretin. Progress bar' ın çalışmasını buton'a basarak başlatın. -->
+      <div style="float:left">
+        <button v-on:click="startProgress">Progress İşlemini Başlat!</button>
+        <div class="Progress">  <div :style="{ width: genislik + 'px'}"> </div>{‌{genislik}} </div>
+      </div>
+    </div>
+    <script>
+    new Vue({
+      el: '#exercise',
+      data: {
+                effect_class_durumu : true,
+          interval : null,
+          Progressinterval : null,
+          inputveri: 'yukseklik',
+          sinif : 'sinif_class',
+          sinif1 : 'sinif_class1',
+          styledegistir : 10,
+          genislik : 0,
+          arkaplan : ''
+      },
+      methods: {
+        startEffect: function(){
+            bu = this;
+            this.interval = setInterval(function(){
+              bu.effect_class_durumu  = !bu.effect_class_durumu
+          },500)
+        },
+        stopEffect : function()
+        {
+            clearInterval(this.interval);
+        },
+        startProgress: function(){
+            bu = this;
+            this.Progressinterval = setInterval(function(){
+              bu.genislik  += 10
+          },500)
+        },
+        
+      },
+      computed : 
+        {
+            divclass: function()
+          {
+              return {
+                highlight : this.effect_class_durumu,
+                shrink : !this.effect_class_durumu
+            }
+          }
+        },
+        watch : 
+        {
+          genislik : function(value)
+          {
+            if(value == 100)
+            {
+                clearInterval(this.Progressinterval);
+            }
+          }
+        }
+    });
+    </script>

@@ -1,0 +1,25 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<div id="app">
+
+    <p>
+        {{title}}
+    </p>
+    <p>
+        {{hello()}}
+    </p>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data :{
+            title : "Merhaba",
+        },
+        methods :{
+            hello : function (){
+                return "merhabalar ben alper küçük"
+            }
+        }
+
+    });
+</script>

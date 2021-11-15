@@ -1,0 +1,36 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <button v-on:click="showAlert">TIKLAYINCA ALERT VERİR V-ON:CLİCK BAĞLAR TIKLAMAYI  METHODSUN ICINDEKİ ALERT 
+        CALISTIRIR.
+    </button>
+    <button v-on:click="counter+=5"> Arttır Class icindekiyle arttırır.</button>
+    <button v-on:click="increaseCounter"> Fonksiyonla Arttırır</button>
+    <p> {{counter}}</p>
+    
+    <p v-on:mousemove ="updateCoords">Kordinatlar; {{x}},{{y}}</p>
+
+</div>
+
+<script>
+    new Vue({
+        el:"#app",
+        data: {
+            counter: 0,
+            x: 0,
+            y: 0
+        },
+        methods :{
+            showAlert : function(){
+                alert('TIKLAYINCA ALERT VERİR V-ONCLİCK BAĞLAR TIKLAMAYI  METHODSUN ICINDEKİ ALERT CALISTIRIR');
+            },
+            increaseCounter : function(){
+                this.counter++;
+            },
+            updateCoords : function(event){
+                this.x = event.clientX;
+                this.y = event.clientY;
+            }
+        }
+    })
+</script>

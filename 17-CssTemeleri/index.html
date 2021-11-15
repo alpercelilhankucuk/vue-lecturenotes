@@ -1,0 +1,20 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link href="style.css" type="text/css" rel="stylesheet"/>
+<div id="app">
+    <div 
+    @click="attachedClass=!attachedClass"
+    :class="{yellow : attachedClass}" class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data:{
+            attachedClass:false
+        }
+        
+    })
+
+</script>
